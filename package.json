@@ -7,7 +7,7 @@
     "dev": "nuxt --host dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "npx prisma generate"
   },
   "dependencies": {
     "@nuxt/eslint": "1.9.0",
