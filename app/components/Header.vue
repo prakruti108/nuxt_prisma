@@ -5,13 +5,18 @@
       <NuxtLink to="/drafts">Drafts</NuxtLink>
     </div>
     <div class="right">
-      <NuxtLink to="/signup">Signup</NuxtLink>
-      <NuxtLink to="/create">+ Create draft</NuxtLink>
+      <button v-if="loggedIn" @click="signOut">Sign out</button>
+      <NuxtLink v-if="!loggedIn" to="/signup">Signup</NuxtLink>
+      <NuxtLink v-if="!loggedIn" to="/login">Login</NuxtLink>
+      <NuxtLink v-if="loggedIn" to="/create">+ Create draft</NuxtLink>
     </div>
   </nav>
 </template>
 
 <script setup>
+const { signOut, status } = useAuth()
+
+const loggedIn = computed(() => status.value === 'authenticated')
 </script>
 
 <style scoped>

@@ -4,6 +4,7 @@
       <h1>Signup user</h1>
       <input autoFocus placeholder="Name" type="text" v-model="name" />
       <input placeholder="Email address" type="text" v-model="email" />
+      <input v-model="password" type="password" placeholder="Password" />
       <input :disabled="!name || !email" type="submit" value="Signup" />
       <NuxtLink class="back" to="/"> or Cancel </NuxtLink>
     </form>
@@ -14,6 +15,7 @@
 
   let name = ref();
   let email = ref();
+  let password = ref();
 
   const signup = async (e) => {
       e.preventDefault()
@@ -22,9 +24,10 @@
         const body = {
           name: name.value,
           email: email.value,
+          password: password.value
         }
 
-        await fetch(`/user`, {
+        await fetch(`/api/auth/register`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(body),

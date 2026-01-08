@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <h1>Drafts</h1>
+    <h1>Drafts {{ status }}</h1>
     <main>
       <p v-if="pending">
         <span class="loading"></span>
@@ -14,7 +14,15 @@
 </template>
 
 <script setup>
-  definePageMeta({ layout: 'default' });
+  definePageMeta({ 
+    layout: 'default',
+    auth: {
+    unauthenticatedOnly: false,
+    navigateUnauthenticatedTo: '/login'      
+    }
+  });
+
+  const {status} = useAuth();
 
   const { data, pending, error } = await useLazyAsyncData('drafts', async () => {
     return await fetch('/draft-list').then(res => res.json());
