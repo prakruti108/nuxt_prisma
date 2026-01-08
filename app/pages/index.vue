@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <h1>My Blog</h1>
+    <h1>My Blogs</h1>
     <main>
       <p v-if="pending">
         <span class="loading"></span>
