@@ -15,7 +15,17 @@ export default defineNuxtConfig({
   },
   vite: {
     server: {
-      allowedHosts: ['dev.konsoftech.in', 'localhost']
+      allowedHosts: ['dev.konsoftech.in', 'localhost', 'nuxt-prisma-gltp.vercel.app'],
     },
   },  
+runtimeConfig: {
+    // Private keys are only available server-side (can be overridden by NUXT_API_SECRET_TOKEN)
+    betterAuthSecretPrivate: process.env.BETTER_AUTH_SECRET || 'default_secret',
+    public: {
+      // Public keys are exposed to the client-side (can be overridden by NUXT_PUBLIC_API_BASE)
+      apiBase: process.env.NUXT_PUBLIC_API_BASE || 'http://localhost:3000/api',
+      betterAuthUrl: process.env.BETTER_AUTH_URL || 'http://localhost:3000',
+      betterAuthSecret: process.env.BETTER_AUTH_SECRET || 'default_secret',
+    }
+  }  
 });
