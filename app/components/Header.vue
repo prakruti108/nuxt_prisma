@@ -5,7 +5,7 @@
       <NuxtLink to="/drafts">Drafts</NuxtLink>
     </div>
     <div class="right">
-      <button v-if="loggedIn" @click="signOut">Sign out</button>
+      <button v-if="loggedIn" @click="authClient.signOut">Sign out</button>
       <NuxtLink v-if="!loggedIn" to="/signup">Signup</NuxtLink>
       <NuxtLink v-if="!loggedIn" to="/login">Login</NuxtLink>
       <NuxtLink v-if="loggedIn" to="/create">+ Create draft</NuxtLink>
@@ -14,9 +14,10 @@
 </template>
 
 <script setup>
-const { signOut, status } = useAuth()
+import { authClient } from "~~/lib/auth-client"
+const session = authClient.useSession()
 
-const loggedIn = computed(() => status.value === 'authenticated')
+const loggedIn = computed(() => session.value?.data ? true : false)
 </script>
 
 <style scoped>

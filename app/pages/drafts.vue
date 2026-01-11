@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <h1>Drafts {{ status }}</h1>
+    <h1>Drafts {{ session }}</h1>
     <main>
       <p v-if="pending">
         <span class="loading"></span>
@@ -14,6 +14,8 @@
 </template>
 
 <script setup>
+      import { authClient } from "~~/lib/auth-client"
+  const session = authClient.useSession()
   definePageMeta({ 
     layout: 'default',
     auth: {
@@ -22,7 +24,6 @@
     }
   });
 
-  const {status} = useAuth();
 
   const { data, pending, error } = await useLazyAsyncData('drafts', async () => {
     return await fetch('/draft-list').then(res => res.json());
