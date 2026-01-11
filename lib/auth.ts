@@ -1,8 +1,12 @@
 import { betterAuth } from "better-auth";
-import Database from "better-sqlite3";
+import { prismaAdapter } from "better-auth/adapters/prisma";
+import { prisma } from '~~/prisma/db'
+
 
 export const auth = betterAuth({
-    database: new Database("./sqlite.db"),
+    database: prismaAdapter(prisma, {
+        provider: "postgresql", // or "mysql", "postgresql", ...etc
+    }),
     emailAndPassword: {
         enabled: true,
         autoSignIn: true,
