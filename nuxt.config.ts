@@ -24,8 +24,8 @@ runtimeConfig: {
     public: {
       // Public keys are exposed to the client-side (can be overridden by NUXT_PUBLIC_API_BASE)
       apiBase: process.env.NUXT_PUBLIC_API_BASE || 'http://localhost:3000/api',
-      betterAuthUrl: process.env.BETTER_AUTH_URL || 'http://localhost:3000',
-      betterAuthSecret: process.env.BETTER_AUTH_SECRET || 'default_secret',
+      betterAuthUrl: process.env.NUXT_BETTER_AUTH_URL || 'http://localhost:3000',
+      betterAuthSecret: process.env.NUXT_BETTER_AUTH_SECRET || 'default_secret',
     }
   }  
 });
