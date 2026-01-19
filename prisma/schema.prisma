@@ -21,7 +21,11 @@ model User {
   sessions      Session[]
   accounts      Account[]
 
+  phoneNumber         String?
+  phoneNumberVerified Boolean?
+
   @@map("user")
+  @@unique([phoneNumber])
 }
 
 model Post {

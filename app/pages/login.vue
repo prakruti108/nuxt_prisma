@@ -37,6 +37,10 @@ const loginWithGithub = async () => {
       <img src="https://authjs.dev/img/providers/github.svg" width="20" />
       Continue with GitHub
     </button>
+
+  <div class="divider">OR</div>
+
+  <PhoneSignIn />
   </div>
 
 </template>
