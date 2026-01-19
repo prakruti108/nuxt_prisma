@@ -41,7 +41,11 @@ const loginWithGithub = async () => {
   <div class="divider">OR</div>
 
   <PhoneSignIn />
-  </div>
+
+  <div class="divider">OR</div>
+
+  <PhoneSignInWithPassword />
+</div>
 
 </template>
 
